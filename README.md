@@ -4,7 +4,7 @@ Repository for Capstone Code
 # QGIS-Download 
 In order to properly visualize and edit our spatial data, we must first download [QGIS](https://qgis.org/download/) and agree to download the recommended suppliments
 
-When doing the setup after download, it will ask you lots of technical questions, ignore most if them (pick the default option), but when you get to which client you 
+When doing the setup after download, it will ask you lots of technical questions, ignore most of them (pick the default option), but when you get to which client you 
 want to install, just make sure to pick only QGIS.
 
 
