@@ -27,45 +27,45 @@ marginsplot, xdimension(general_security) by(guards)
 ***reg 1 gates on healthcare parks  
 putexcel set "probit_results.xlsx", sheet("Results") replace
 probit gate_restricted_entrance healthcare parks
-putexcel A1 = etable
+putexcel A2 = etable
 margins, dydx(*)
-putexcel A5 = etable
+putexcel A7 = etable
 margins, at(healthcare=(0 1) parks=(0 1))
-putexcel A9 = etable
+putexcel A12 = etable
 
 ***reg 2 gates on healthcare energybackup 
 
 probit gate_restricted_entrance healthcare electricity_backup
-putexcel A17 = etable
+putexcel A19 = etable
 margins, dydx(*)
-putexcel A22 = etable
+putexcel A24 = etable
 margins, at(healthcare=(0 1) electricity_backup=(0 1))
-putexcel A28 = etable
+putexcel A30 = etable
 
 ***reg 3 healthcare on gates energybackup
 
 probit healthcare gate_restricted_entrance electricity_backup
-putexcel A36 = etable
+putexcel A38 = etable
 margins, dydx(*)
-putexcel A41 = etable
+putexcel A44 = etable
 margins, at(gate_restricted_entrance=(0 1) electricity_backup=(0 1))
-putexcel A46 = etable
+putexcel A51 = etable
 
 ***reg 4 gates on parks religious sites
 probit gate_restricted_entrance parks religious_sites 
-putexcel A51 = etable
+putexcel A59 = etable
 margins, dydx(*)
-putexcel A55 = etable
+putexcel A65 = etable
 margins, at(parks=(0 1) religious_sites=(0 1))
-putexcel A60 = etable
+putexcel A70 = etable
 
 ***reg 5 gates on parks religious sites public amenities
 probit gate_restricted_entrance parks religious_sites public_amenities
-putexcel A68 = etable
+putexcel A77 = etable
 margins, dydx(*)
-putexcel A63 = etable
+putexcel A82 = etable
 margins, at(parks=(0 1) religious_sites=(0 1) public_amenities=(0 1))
-putexcel A71 = etable
+putexcel A87 = etable
 
 
 
