@@ -24,7 +24,7 @@ marginsplot, xdimension(general_security) by(guards)
 
 //Question: Are Public Services are being gatekept?
 
-****reg 1 gates on healthcare parks  
+***reg 1 gates on healthcare parks  
 
 probit gate_restricted_entrance healthcare parks
 
@@ -50,7 +50,15 @@ margins, at(healthcare=(0 1) electricity_backup=(0 1))
 * Visualization
 marginsplot, xdimension(healthcare) by(electricity_backup)
 
-***Reg 2 healthcare on gates energybackup
+***reg 2 healthcare on gates energybackup
+probit healthcare gate_restricted_entrance electricity_backup
+
+margins, dydx(*)
+
+margins, at(gate_restricted_entrance=(0 1) electricity_backup=(0 1))
+
+* Visualization
+marginsplot, xdimension(gate_restricted_entrance) by(electricity_backup)
 
 //Question: 
 
