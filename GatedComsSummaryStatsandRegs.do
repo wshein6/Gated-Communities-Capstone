@@ -23,48 +23,51 @@ margins, at(general_security=(0 1) guards=(0 1))
 marginsplot, xdimension(general_security) by(guards)
 
 //Question: Are Public Services are being gatekept?
-
-***reg 1 gates on healthcare parks  
-
-probit gate_restricted_entrance healthcare parks
-
-margins, dydx(*)
-
-margins, at(healthcare=(0 1) parks=(0 1))
-
-***** Visualization
-marginsplot, xdimension(healthcare) by(parks)
-
-*****export
-
 //Question: Is Healthcare being (*literally*) Gatekept
+***reg 1 gates on healthcare parks  
+putexcel set "probit_results.xlsx", sheet("Results") replace
+probit gate_restricted_entrance healthcare parks
+putexcel A1 = etable
+margins, dydx(*)
+putexcel A5 = etable
+margins, at(healthcare=(0 1) parks=(0 1))
+putexcel A9 = etable
 
-***reg 1 gates on healthcare energybackup 
+***reg 2 gates on healthcare energybackup 
 
 probit gate_restricted_entrance healthcare electricity_backup
-
+putexcel A17 = etable
 margins, dydx(*)
-
+putexcel A22 = etable
 margins, at(healthcare=(0 1) electricity_backup=(0 1))
+putexcel A28 = etable
 
-* Visualization
-marginsplot, xdimension(healthcare) by(electricity_backup)
+***reg 3 healthcare on gates energybackup
 
-***reg 2 healthcare on gates energybackup
 probit healthcare gate_restricted_entrance electricity_backup
-
+putexcel A36 = etable
 margins, dydx(*)
-
+putexcel A41 = etable
 margins, at(gate_restricted_entrance=(0 1) electricity_backup=(0 1))
-
-* Visualization
-marginsplot, xdimension(gate_restricted_entrance) by(electricity_backup)
-
-//Question: 
-
-
+putexcel A46 = etable
 
 
 **Logit Regs 
 logit gate_restricted_entrance general_security guards
+
+
+
+
+*************Visualizations 
+* Visualization
+marginsplot, xdimension(healthcare) by(electricity_backup)
+
+***** Visualization
+marginsplot, xdimension(healthcare) by(parks)
+
+* Visualization
+marginsplot, xdimension(healthcare) by(electricity_backup)
+
+* Visualization
+marginsplot, xdimension(gate_restricted_entrance) by(electricity_backup)
 
