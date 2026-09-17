@@ -51,9 +51,27 @@ putexcel A41 = etable
 margins, at(gate_restricted_entrance=(0 1) electricity_backup=(0 1))
 putexcel A46 = etable
 
+***reg 4 gates on parks religious sites
+probit gate_restricted_entrance parks religious_sites 
+putexcel A51 = etable
+margins, dydx(*)
+putexcel A55 = etable
+margins, at(parks=(0 1) religious_sites=(0 1))
+putexcel A60 = etable
+
+***reg 5 gates on parks religious sites public amenities
+probit gate_restricted_entrance parks religious_sites public_amenities
+putexcel A68 = etable
+margins, dydx(*)
+putexcel A63 = etable
+margins, at(parks=(0 1) religious_sites=(0 1) public_amenities=(0 1))
+putexcel A71 = etable
+
+
 
 **Logit Regs 
 logit gate_restricted_entrance general_security guards
+
 
 
 
