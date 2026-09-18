@@ -1,10 +1,12 @@
 //Convert from .csv to .xlsx then import 
 import excel "GatedCommunitiesXLversion.xlsx", firstrow clear
+cd "C:\Users\willi\Downloads"
+import excel "society_data_shifted_minbounds_area_guides_public_goods_cleaned", firstrow clear
 
-
+ssc install estout
 //Basic Summary Stats
 
-estpost sum electricity_backup electricity_grid_stations gas_general gate_restricted_entrance general_security guards healthcare parks patrol public_amenities religious_sites roads_transport sewage_drainage_system street_lights_snippet telecom util_general wall water_general water_overhead_tanks water_underground_tanks
+estpost sum electricity_backup electricity_grid_stations gas_general gate_restricted_entrance general_security guards healthcare parks patrol public_amenities religious_sites roads_transport sewage_drainage_system street_lights_snippet telecom util_general wall water_general water_overhead_tanks water_underground_tanks roads_transport sewage_drainage_system util_general water_filtration_plants governance
 
 esttab using "summary_stats.csv", cells("count mean sd min max") noobs nonum nomtitle replace
 
@@ -67,12 +69,20 @@ putexcel A82 = etable
 margins, at(parks=(0 1) religious_sites=(0 1) public_amenities=(0 1))
 putexcel A87 = etable
 
+***test probit
+
+probit parks religious_sites
+
+margins, at(religious_sites=(0 1))
+
+marginsplot
+
 
 
 **Logit Regs 
 logit gate_restricted_entrance general_security guards
 
-
+margins, dydx(*)
 
 
 
